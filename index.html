@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tân Tuồng Diện Phổ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --maroon: #a01818;
+            --maroon-dark: #7a0f10;
+            --navy: #16213e;
+            --navy-deep: #0f1830;
+            --gold: #d4a94a;
+            --gold-light: #e8c777;
+            --cream: #f4ede0;
+            --header-bg: #141225;
+            --arch-offset: -30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: var(--maroon);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--header-bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 169, 74, 0.15);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 26px 0 30px;
+            background:
+                radial-gradient(ellipse at center 55%, rgba(180, 40, 30, 0.55) 0%, transparent 55%),
+                radial-gradient(circle at center, var(--maroon) 0%, var(--maroon-dark) 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 620px;
+            height: 620px;
+            transform: translate(-50%, -48%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 60, 40, 0.4) 0%, transparent 70%);
+            box-shadow:
+                0 0 0 60px rgba(200, 60, 40, 0.06),
+                0 0 0 130px rgba(200, 60, 40, 0.05);
+            pointer-events: none;
+        }
+
+        .side-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 10px;
+            letter-spacing: 6px;
+            color: rgba(244, 237, 224, 0.18);
+            text-transform: uppercase;
+            user-select: none;
+        }
+
+        .side-text.left { left: 26px; }
+        .side-text.right { right: 26px; }
+
+        .cloud {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(8px);
+            opacity: 0.55;
+            pointer-events: none;
+        }
+        .cloud.tl { top: 90px;  left: 40px;   width: 180px; height: 70px;
+            background: radial-gradient(circle, #c8502a 0%, transparent 70%); }
+        .cloud.tr { top: 80px;  right: 40px;  width: 200px; height: 75px;
+            background: radial-gradient(circle, #c8502a 0%, transparent 70%); }
+        .cloud.tc { top: 110px; left: 46%;    width: 150px; height: 55px;
+            background: radial-gradient(circle, #c98a3a 0%, transparent 70%); }
+        .cloud.bl { bottom: 40px; left: 40px; width: 200px; height: 75px;
+            background: radial-gradient(circle, #7a3a3a 0%, transparent 70%); }
+        .cloud.br { bottom: 40px; right: 40px; width: 200px; height: 75px;
+            background: radial-gradient(circle, #7a3a3a 0%, transparent 70%); }
+
+        .swirl {
+            position: absolute;
+            font-size: 34px;
+            color: rgba(60, 90, 150, 0.55);
+            pointer-events: none;
+        }
+        .swirl.s1 { top: 95px; left: 130px; }
+        .swirl.s2 { top: 130px; left: 52%; color: rgba(90, 120, 180, 0.6); }
+        .swirl.s3 { top: 90px; right: 150px; color: rgba(90, 120, 180, 0.6); }
+        .swirl.s4 { bottom: 55px; left: 120px; color: rgba(150, 90, 70, 0.5); }
+        .swirl.s5 { bottom: 55px; right: 130px; color: rgba(150, 90, 70, 0.5); }
+
+        .arch {
+            position: relative;
+            z-index: 5;
+            width: 430px;
+            max-width: 90vw;
+            padding: 60px 50px 55px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+            border-radius: 215px 215px 14px 14px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            text-align: center;
+            transform: translateY(var(--arch-offset));
+        }
+
+        .arch .top-star {
+            color: var(--gold);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .arch .divider-line {
+            width: 90px;
+            height: 1px;
+            background: rgba(212, 169, 74, 0.5);
+            margin: 18px auto 30px;
+        }
+
+        .arch h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 52px;
+            line-height: 1.1;
+            color: var(--cream);
+            letter-spacing: 1px;
+        }
+
+        .wave {
+            width: 340px;
+            max-width: 80%;
+            margin: 26px auto 20px;
+            display: block;
+        }
+
+        .arch .subtitle {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: rgba(244, 237, 224, 0.75);
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        .arch .actions {
+            margin-top: 34px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn {
+            padding: 15px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, var(--gold-light), var(--gold));
+            border: none;
+            color: var(--navy-deep);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 169, 74, 0.7);
+            color: var(--cream);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 169, 74, 0.12);
+            border-color: var(--gold);
+        }
+
+        .contact-footer {
+            position: relative;
+            background: var(--maroon-dark);
+            color: var(--cream);
+            overflow: hidden;
+            padding: 64px 32px 24px;
+        }
+
+        .contact-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 15%, rgba(244, 237, 224, 0.08), transparent 22%),
+                        radial-gradient(circle at 85% 90%, rgba(244, 237, 224, 0.06), transparent 18%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-footer .footer-shell {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 38px;
+            align-items: start;
+        }
+
+        .contact-footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 2.8vw, 3.4rem);
+            line-height: 1.05;
+            margin: 0;
+        }
+
+        .footer-heading {
+            margin-bottom: 20px;
+        }
+
+        .footer-divider {
+            width: 84px;
+            height: 2px;
+            margin: 24px 0 24px 0;
+            background: var(--gold);
+            border-radius: 999px;
+        }
+
+        .footer-copy {
+            max-width: 560px;
+            color: rgba(244, 237, 224, 0.85);
+            line-height: 1.9;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .footer-contact {
+            border: 1px solid rgba(212, 169, 74, 0.22);
+            border-radius: 24px;
+            padding: 32px;
+            display: grid;
+            gap: 18px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-contact .contact-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(212, 169, 74, 0.85);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 22px;
+        }
+
+        .footer-contact h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .footer-contact a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(212, 169, 74, 0.15);
+            margin-top: 54px;
+            padding-top: 22px;
+            font-size: 0.94rem;
+            color: rgba(244, 237, 224, 0.72);
+        }
+
+        .footer-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--gold);
+            transition: transform 0.2s ease, background 0.2s ease;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            transform: scale(1.05);
+            background: rgba(212, 169, 74, 0.12);
+        }
+
+        .contact-footer .footer-cloud {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(244, 237, 224, 0.06);
+            filter: blur(10px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .contact-footer .footer-cloud.left {
+            left: -60px;
+            bottom: -30px;
+        }
+
+        .contact-footer .footer-cloud.right {
+            right: -80px;
+            bottom: -40px;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-footer .footer-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .experience-section {
+                padding: 60px 20px 0;
+            }
+
+            .contact-footer {
+                padding: 52px 20px 24px;
+            }
+
+            .footer-contact {
+                padding: 28px;
+            }
+
+            .footer-heading {
+                text-align: center;
+            }
+
+            .footer-copy {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-bottom {
+                padding-top: 18px;
+            }
+        }
+
+        .red-panel {
+            position: relative;
+            width: 100vw;
+            min-height: calc(100vh - 670px);
+            background: var(--maroon);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .experience-section {
+            position: relative;
+            padding: 100px 0 80px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+            overflow: hidden;
+        }
+
+        .experience-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 18% 22%, rgba(212, 169, 74, 0.14), transparent 22%),
+                        radial-gradient(circle at 84% 88%, rgba(244, 237, 224, 0.08), transparent 14%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .experience-shell {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-intro {
+            max-width: 720px;
+            margin: 0 auto 56px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.7s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .experience-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.6rem, 4vw, 3.8rem);
+            line-height: 1.05;
+            margin-top: 18px;
+        }
+
+        .experience-intro p {
+            margin-top: 20px;
+            color: rgba(244, 237, 224, 0.78);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .experience-divider {
+            width: 72px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 999px;
+            margin: 24px auto 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 169, 74, 0.18);
+            border-radius: 28px;
+            padding: 34px 30px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.35s; }
+        .feature-card:nth-child(2) { animation-delay: 0.5s; }
+        .feature-card:nth-child(3) { animation-delay: 0.65s; }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 36px 90px rgba(0, 0, 0, 0.22);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 24px;
+            border-radius: 18px;
+            background: rgba(212, 169, 74, 0.14);
+            color: var(--gold);
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            margin-bottom: 14px;
+        }
+
+        .feature-card p {
+            color: rgba(244, 237, 224, 0.77);
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .card-btn {
+            margin-top: 30px;
+            width: fit-content;
+        }
+
+        .section-spark {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(212, 169, 74, 0.8);
+            filter: blur(0.6px);
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-spark.s1 {
+            top: 24%;
+            left: 12%;
+        }
+
+        .section-spark.s2 {
+            bottom: 22%;
+            right: 14%;
+            width: 14px;
+            height: 14px;
+            opacity: 0.75;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .experience-intro,
+            .feature-card {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        .help {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--cream);
+            border: 1px solid rgba(244, 237, 224, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        @media (max-width: 1024px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav, .btn-header { display: none; }
+            .arch h1 { font-size: 38px; }
+            .side-text { display: none; }
+            .experience-section {
+                padding: 60px 20px 80px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <!-- decorative clouds & swirls -->
+        <span class="cloud tl"></span>
+        <span class="cloud tr"></span>
+        <span class="cloud tc"></span>
+        <span class="cloud bl"></span>
+        <span class="cloud br"></span>
+        <span class="swirl s1">༄</span>
+        <span class="swirl s2">༄</span>
+        <span class="swirl s3">༄</span>
+        <span class="swirl s4">༄</span>
+        <span class="swirl s5">༄</span>
+
+        <div class="side-text left">Nghệ thuật truyền thống Việt Nam</div>
+        <div class="side-text right">Sân khấu cổ điển Á Đông</div>
+
+        <div class="arch">
+            <div class="top-star">✦</div>
+            <div class="divider-line"></div>
+            <h1>Tân Tuồng<br>Diện Phổ</h1>
+
+            <svg class="wave" viewBox="0 0 340 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 7 Q 12 1, 22 7 T 42 7 T 62 7 T 82 7 T 102 7 T 122 7 T 142 7 T 162 7 T 182 7 T 202 7 T 222 7 T 242 7 T 262 7 T 282 7 T 302 7 T 322 7 T 338 7"
+                      stroke="#d4a94a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+
+            <div class="subtitle">
+                Bảo tồn và lan tỏa<br>
+                Nghệ thuật tuồng Việt Nam
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary">Khám phá nghệ thuật tuồng</button>
+                <button class="btn btn-outline">Tìm hiểu nhân vật &amp; hóa trang</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section">
+        <div class="experience-shell">
+            <div class="experience-intro">
+                <div class="section-label">Trải nghiệm tiếp theo</div>
+                <h2>Hành trình truyền thống tuồng Việt trong diện mạo hiện đại</h2>
+                <div class="experience-divider"></div>
+                <p>Ba góc nhìn đậm dấu ấn nghệ thuật tuồng, từ kỹ thuật biểu diễn đến nhân vật và âm nhạc, được trình bày bằng phong cách tinh tế và hiện đại.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="red-panel"></div>
+
+    <footer class="contact-footer" aria-labelledby="footer-contact-title">
+        <div class="contact-footer__cloud footer-cloud left"></div>
+        <div class="contact-footer__cloud footer-cloud right"></div>
+
+        <div class="footer-shell">
+            <div class="footer-heading">
+                <h2 id="footer-contact-title">Liên hệ</h2>
+                <div class="footer-divider"></div>
+                <p class="footer-copy">Chúng tôi luôn sẵn sàng lắng nghe những ý kiến đóng góp và kết nối cùng cộng đồng yêu nghệ thuật Tuồng.</p>
+            </div>
+
+            <address class="footer-contact" aria-label="Email contact">
+                <div class="contact-icon" aria-hidden="true">✉️</div>
+                <div>
+                    <h3>Email</h3>
+                    <a href="mailto:contact@tantuongdienpho.vn">contact@tantuongdienpho.vn</a>
+                </div>
+            </address>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 Tân Tường Diện Phố. All rights reserved.</div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com" aria-label="Facebook page" target="_blank" rel="noreferrer noopener">f</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="help" title="Trợ giúp">?</button>
+</body>
+</html>
