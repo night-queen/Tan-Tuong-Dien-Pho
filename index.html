@@ -116,6 +116,7 @@
             font-size: 34px;
             color: rgba(60, 90, 150, 0.55);
             pointer-events: none;
+            z-index: 3;
         }
         .swirl.s1 { top: 95px; left: 130px; }
         .swirl.s2 { top: 130px; left: 52%; color: rgba(90, 120, 180, 0.6); }
@@ -123,6 +124,51 @@
         .swirl.s4 { bottom: 55px; left: 120px; color: rgba(150, 90, 70, 0.5); }
         .swirl.s5 { bottom: 55px; right: 130px; color: rgba(150, 90, 70, 0.5); }
 
+        /* PNG decorative clouds (use images from /img) */
+        .png-cloud {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            object-fit: contain;
+            height: auto;
+            z-index: 2; /* below .arch (z-index:5) */
+        }
+
+        /* Top-left: img/4.png — slightly overflow left edge */
+        .png-cloud.top-left {
+            left: 270px;
+            top: 40px;
+            width: clamp(340px, 36vw, 380px);
+            transform: scale(1.5);
+            transform-origin: center center;
+        }
+
+        /* Top-right: img/5.png */
+        .png-cloud.top-right {
+            right: 380px;
+            top: 210px;
+            width: clamp(180px, 18vw, 220px);
+            transform: rotate(-5deg) scale(2);
+            transform-origin: center center;
+        }
+
+        /* Bottom-left base: img/2.png (teal cloud) */
+        .png-cloud.bottom-left {
+            left: 10px;
+            bottom: -80px;
+            width: clamp(380px, 44vw, 450px);
+            z-index: 2;
+        }
+
+        /* Bottom-left small overlay (removed) */
+
+        /* Responsive: reduce cloud sizes to ~65% on small screens */
+        @media (max-width: 768px) {
+            .png-cloud.top-left { width: clamp(220px, 30vw, 250px); left: 290px; top: 24px; transform: scale(1.5); transform-origin: center center; }
+            .png-cloud.top-right { width: clamp(120px, 22vw, 150px); right: 280px; top: 140px; transform: rotate(-5deg) scale(2); transform-origin: center center; }
+            .png-cloud.bottom-left { width: clamp(240px, 45vw, 300px); left: 50px; bottom: -40px; }
+            /* .png-cloud.bottom-left-small removed */
+        }
         .arch {
             position: relative;
             z-index: 5;
@@ -620,6 +666,13 @@
         <span class="cloud tc"></span>
         <span class="cloud bl"></span>
         <span class="cloud br"></span>
+
+        <!-- decorative clouds & swirls (original ornaments restored) -->
+        <!-- PNG cloud decorations (layered below the arch) -->
+        <img src="img/4.png" alt="" class="png-cloud top-left" aria-hidden="true">
+        <img src="img/5.png" alt="" class="png-cloud top-right" aria-hidden="true">
+        <img src="img/2.png" alt="" class="png-cloud bottom-left" aria-hidden="true">
+
         <span class="swirl s1">༄</span>
         <span class="swirl s2">༄</span>
         <span class="swirl s3">༄</span>
@@ -686,7 +739,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© 2026 Tân Tường Diện Phố. All rights reserved.</div>
+            <div>© 2026 Tân Tường Diện Phố. All rights reser    ved.</div>
             <div class="footer-social">
                 <a href="https://www.facebook.com" aria-label="Facebook page" target="_blank" rel="noreferrer noopener">f</a>
             </div>
